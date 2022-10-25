@@ -1,5 +1,5 @@
 function compareTriplets(a, b) {
-  let score = [0, 0];
+  const score = [0, 0];
   
   for (let i = 0; i < a.length; i++) {
       if (a[i] > b[i]) {
