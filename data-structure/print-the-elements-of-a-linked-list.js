@@ -1,8 +1,5 @@
 function printLinkedList(head) {
-  let cur = head;
-
-  while (cur) {
+  for (let cur = head; cur !== null; cur = cur.next) {
     console.log(cur.data);
-    cur = cur.next;
   }
 }
