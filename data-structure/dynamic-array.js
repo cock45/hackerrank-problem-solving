@@ -4,13 +4,13 @@ function dynamicArray(n, queries) {
   const result = [];
   let lastAnswer = 0;
 
-  for (const [sign, first, second] of queries) {
-    const idx = (first ^ lastAnswer) % n;
+  for (const [type, x, y] of queries) {
+    const idx = (x ^ lastAnswer) % n;
 
-    if (sign === 1) {
-      arr[idx].push(second);
+    if (type === 1) {
+      arr[idx].push(y);
     } else {
-      lastAnswer = arr[idx][second % arr[idx].length];
+      lastAnswer = arr[idx][y % arr[idx].length];
       result.push(lastAnswer);
     }
   }
