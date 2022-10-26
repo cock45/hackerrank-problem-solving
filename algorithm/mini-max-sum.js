@@ -1,13 +1,8 @@
 function miniMaxSum(arr) {
   // Write your code here
-  const [sum, max, min] = arr.reduce(
-    ([sum, max, min], value) => [
-      sum + value,
-      Math.max(max, value),
-      Math.min(min, value),
-    ],
-    [0, arr[0], arr[0]]
-  );
+  const sum = arr.reduce((total, value) => total + value, 0);
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
 
   console.log(sum - max, sum - min);
 }
