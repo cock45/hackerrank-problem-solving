@@ -1,23 +1,19 @@
 function dynamicArray(n, queries) {
   // Write your code here
-  const arr = [];
+  const arr = new Array(n).fill("").map(() => new Array(0).fill(""));
   const result = [];
   let lastAnswer = 0;
-  
-  for(let ia = 0; ia < n; ia++) {
-      arr[ia] = [];
+
+  for (const element of queries) {
+    const idx = (element[1] ^ lastAnswer) % n;
+
+    if (element[0] == 1) {
+      arr[idx].push(element[2]);
+    } else {
+      lastAnswer = arr[idx][element[2] % arr[idx].length];
+      result.push(lastAnswer);
+    }
   }
-  
-  for(let i = 0; i < queries.length; i++) {
-      if(queries[i][0] == 1) {
-          const idx = (queries[i][1] ^ lastAnswer) % n;
-          arr[idx].push(queries[i][2]);
-      } else {
-          const idx = (queries[i][1] ^ lastAnswer) % n;
-          lastAnswer = arr[idx][queries[i][2] % arr[idx].length];
-          result.push(lastAnswer);
-      }
-  }
-  
+
   return result;
 }
