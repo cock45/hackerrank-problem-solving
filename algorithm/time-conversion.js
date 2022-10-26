@@ -1,13 +1,13 @@
 function timeConversion(s) {
   // Write your code here
   let [hour, min, sec] = s
-    .slice(0, 8)
+    .slice(0, -2)
     .split(":")
     .map((value) => parseInt(value));
 
   hour %= 12;
 
-  if (s.slice(8, s.length) === "PM") {
+  if (s.slice(-2) === "PM") {
     hour += 12;
   }
 
