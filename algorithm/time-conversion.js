@@ -1,14 +1,14 @@
 function timeConversion(s) {
   // Write your code here
-  let [hour, min, sec] = s.split(":");
+  let [hour, min, sec] = s.split(":").map((value) => parseInt(value));
 
-  if (sec.indexOf("P") > -1) {
-    hour = (parseInt(hour) % 12) + 12;
-  } else if (hour === "12") {
-    hour = "00";
+  hour %= 12;
+
+  if (s.indexOf("P") > -1) {
+    hour += 12;
   }
 
-  sec = parseInt(sec).toString().padStart(2, "0");
-
-  return [hour, min, sec].join(":");
+  return [hour, min, sec]
+    .map((value) => value.toString().padStart(2, "0"))
+    .join(":");
 }
