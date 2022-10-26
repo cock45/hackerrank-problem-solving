@@ -1,16 +1,16 @@
 function dynamicArray(n, queries) {
   // Write your code here
-  const arr = new Array(n).fill("").map(() => new Array(0).fill(""));
+  const arr = new Array(n).fill(null).map(() => []);
   const result = [];
   let lastAnswer = 0;
 
-  for (const element of queries) {
-    const idx = (element[1] ^ lastAnswer) % n;
+  for (const [sign, first, second] of queries) {
+    const idx = (first ^ lastAnswer) % n;
 
-    if (element[0] == 1) {
-      arr[idx].push(element[2]);
+    if (sign === 1) {
+      arr[idx].push(second);
     } else {
-      lastAnswer = arr[idx][element[2] % arr[idx].length];
+      lastAnswer = arr[idx][second % arr[idx].length];
       result.push(lastAnswer);
     }
   }
