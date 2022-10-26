@@ -2,7 +2,7 @@ function hourglassSum(arr) {
   // Write your code here
   let max = -63;
 
-  for (let i = 1; i < 5; i++)
+  for (let i = 1; i < 5; i++) {
     for (let j = 1; j < 5; j++) {
       let sum =
         arr[i - 1][j - 1] +
@@ -14,6 +14,7 @@ function hourglassSum(arr) {
         arr[i + 1][j + 1];
       max = Math.max(sum, max);
     }
+  }
 
   return max;
 }
