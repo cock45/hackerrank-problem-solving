@@ -1,7 +1,7 @@
 function insertNodeAtHead(head, data) {
-  let cur = new SinglyLinkedListNode(data);
+  let newNode = new SinglyLinkedListNode(data);
 
-  cur.next = head;
+  newNode.next = head;
 
-  return cur;
+  return newNode;
 }
