@@ -1,5 +1,5 @@
 function insertNodeAtHead(head, data) {
-  let newNode = new SinglyLinkedListNode(data);
+  const newNode = new SinglyLinkedListNode(data);
 
   newNode.next = head;
 
