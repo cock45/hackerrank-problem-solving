@@ -7,7 +7,7 @@ function pickingNumbers(a) {
 
     return Math.max(
         ...frequences
-            .map((freq, pos) => freq + frequences[pos + 1])
             .slice(0, -1)
+            .map((freq, pos) => freq + frequences[pos + 1])
     );
 }
