@@ -1,4 +1,4 @@
 function pageCount(n, p) {
-  // Write your code here
-  return Math.min(Math.floor(p / 2), Math.floor((n - p + ((n - 1) % 2)) / 2))
+    // Write your code here
+    return Math.floor(Math.min(p / 2, (n - p + ((n - 1) % 2)) / 2));
 }
