@@ -1,22 +1,20 @@
 function breakingRecords(scores) {
   // Write your code here
+  let records = [0, 0];
   let max = scores[0];
   let min = scores[0];
 
-  return scores.reduce(
-    (records, value) => {
-      if (value > max) {
-        max = value;
+  for (let score of scores) {
+      if (score > max) {
+        max = score;
         records[0]++;
       }
 
-      if (value < min) {
-        min = value;
+      if (score < min) {
+        min = score;
         records[1]++;
       }
-
-      return records;
-    },
-    [0, 0]
-  );
+  }
+  
+  return records;
 }
