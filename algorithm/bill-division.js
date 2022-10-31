@@ -1,0 +1,1 @@
+console.log(b - (bill.reduce((total, price) => total + price, 0) - bill[k]) / 2 || 'Bon Appetit');
