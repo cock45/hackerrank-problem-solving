@@ -1,16 +1,6 @@
 function sockMerchant(n, ar) {
     // Write your code here
-    let count = 0;
+    const frequences = ar.reduce((freq, value) => (++freq[value - 1], freq), new Array(100).fill(0));
 
-    const numbersOfTypes = ar.reduce((counts, sock) => {
-        counts[sock] = !counts[sock] ? 1 : ++counts[sock];
-
-        return counts[sock], counts;
-    }, {});
-
-    for (let key in numbersOfTypes) {
-        count += parseInt(numbersOfTypes[key] / 2);
-    }
-
-    return count;
+    return frequences.reduce((count, value) => count + Math.floor(value / 2), 0);
 }
