@@ -3,5 +3,11 @@ function catAndMouse(x, y, z) {
     const fromAtoC = Math.abs(x - z);
     const fromBtoC = Math.abs(y - z);
 
-    return result[Math.sign(fromAtoC - fromBtoC) + 1];
+    if (fromAtoC > fromBtoC) {
+        return 'Cat A';
+    } else if (fromAtoC < fromBtoC) {
+        return 'Cat B';
+    } else {
+        return 'Mouse C';
+    }
 }
