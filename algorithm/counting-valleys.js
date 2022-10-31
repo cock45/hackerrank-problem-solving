@@ -3,7 +3,7 @@ function countingValleys(steps, path) {
     let position = 0;
     let count = 0;
 
-    for (let step of path.split("")) {
+    for (let step of path) {
         if (step === 'U') {
             position++;
         } else {
