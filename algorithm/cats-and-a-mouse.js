@@ -1,5 +1,7 @@
 function catAndMouse(x, y, z) {
     const result = ['Cat A', 'Mouse C', 'Cat B'];
+    const fromAtoC = Math.abs(x - z);
+    const fromBtoC = Math.abs(y - z);
 
-    return result[Math.sign(Math.abs(x - z) - Math.abs(y - z)) + 1];
+    return result[Math.sign(fromAtoC - fromBtoC) + 1];
 }
