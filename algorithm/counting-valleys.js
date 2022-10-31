@@ -1,8 +1,9 @@
 function countingValleys(steps, path) {
     // Write your code here
     let position = 0;
+    let count = 0;
 
-    const count = path.split('').reduce((count, step) => {
+    for (let step of path.split("")) {
         if (step === 'U') {
             position++;
         } else {
@@ -12,9 +13,7 @@ function countingValleys(steps, path) {
         if (step === 'U' && position === 0) {
             count++;
         }
-
-        return count;
-    }, 0);
+    }
 
     return count;
 }
