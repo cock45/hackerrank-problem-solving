@@ -1,8 +1,8 @@
 function designerPdfViewer(h, word) {
     // Write your code here
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-    const heights = word.split('').map((letter) => h[alphabet.indexOf(letter)]);
+    const heights = word
+        .split('')
+        .map((letter) => h[letter.charCodeAt(0) - 97]);
 
     return Math.max(...heights) * word.length;
 }
