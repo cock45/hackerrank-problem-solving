@@ -1,13 +1,4 @@
 function utopianTree(n) {
-    let height = 0;
-
-    for (let cycle = 0; cycle <= n; cycle++) {
-        if (cycle % 2 === 0) {
-            height++;
-        } else {
-            height = 2 * height;
-        }
-    }
-
-    return height;
+    // Write your code here
+    return Math.pow(2, Math.ceil(n / 2) + 1) - Math.pow(2, n % 2);
 }
