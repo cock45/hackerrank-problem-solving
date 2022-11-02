@@ -2,12 +2,13 @@
 
 function climbingLeaderboard(ranked, player) {
     // Write your code here
-    for (let i = 1; i < ranked.length; i++) {
-        if (ranked[i] === ranked[i - 1]) {
-            ranked.splice(i, 1);
-            i--;
+    let newLen = 0;
+    for (let i = 0; i < ranked.length; i++) {
+        if (ranked[i] !== ranked[i + 1]) {
+            ranked[newLen++] = ranked[i];
         }
     }
+    ranked.splice(newLen);
 
     const ranking = new Array(player.length).fill(1);
 
