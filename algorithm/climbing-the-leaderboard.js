@@ -1,28 +1,30 @@
 function climbingLeaderboard(ranked, player) {
     // Write your code here
-    const fixedRank = [];
-
-    for (let cur in ranked) {
-        if (ranked[cur] !== ranked[cur - 1]) {
-            fixedRank.push(ranked[cur]);
+    for (let i = 1; i < ranked.length; i++) {
+        if (ranked[i] === ranked[i - 1]) {
+            ranked.splice(i, 1);
+            i--;
         }
     }
 
-    let pos = fixedRank.length;
+    let pos = ranked.length;
+    const ranking = [];
 
-    const ranking = player.map((value) => {
+    for (let p = 0; p < player.length; p++) {
         for (let i = pos - 1; i >= 0; i--) {
-            if (fixedRank[i] > value) {
+            if (ranked[i] > player[p]) {
                 pos = i + 1;
-                return pos + 1;
+                ranking.push(pos + 1);
+                break;
             }
 
-            if (value >= fixedRank[0]) {
+            if (player[p] >= ranked[0]) {
                 pos = 1;
-                return pos;
+                ranking.push(pos);
+                break;
             }
         }
-    });
+    }
 
     return ranking;
 }
