@@ -9,18 +9,22 @@ function climbingLeaderboard(ranked, player) {
         }
     }
 
-    const ranking = [];
+    const ranking = new Array(player.length).fill(1);
 
-    for (let p = 0; p < ranked.length; p++) {
-        if (player[player.length - ranking.length - 1] >= ranked[p]) {
-            ranking.push(p + 1);
-            p--;
+    let k = ranked.length - 1,
+        i = 0;
+
+    while (i < player.length) {
+        if (k < 0) {
+            return ranking;
+        } else if (ranked[k] === player[i]) {
+            ranking[i++] = k + 1;
+        } else if (ranked[k] > player[i]) {
+            ranking[i++] = k + 2;
+        } else {
+            k--;
         }
     }
 
-    const rest = new Array(player.length - ranking.length).fill(
-        ranked.length + 1
-    );
-
-    return ranking.concat(rest).reverse();
+    return ranking;
 }
