@@ -17,7 +17,7 @@ function climbingLeaderboard(ranked, player) {
 
     while (i < player.length) {
         if (k < 0) {
-            return ranking;
+            break;
         } else if (ranked[k] === player[i]) {
             ranking[i++] = k + 1;
         } else if (ranked[k] > player[i]) {
