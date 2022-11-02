@@ -1,3 +1,5 @@
+// O(n); n: ranked.length
+
 function climbingLeaderboard(ranked, player) {
     // Write your code here
     for (let i = 1; i < ranked.length; i++) {
@@ -7,24 +9,18 @@ function climbingLeaderboard(ranked, player) {
         }
     }
 
-    let pos = ranked.length;
     const ranking = [];
 
-    for (let p = 0; p < player.length; p++) {
-        for (let i = pos - 1; i >= 0; i--) {
-            if (ranked[i] > player[p]) {
-                pos = i + 1;
-                ranking.push(pos + 1);
-                break;
-            }
-
-            if (player[p] >= ranked[0]) {
-                pos = 1;
-                ranking.push(pos);
-                break;
-            }
+    for (let p = 0; p < ranked.length; p++) {
+        if (player[player.length - ranking.length - 1] >= ranked[p]) {
+            ranking.push(p + 1);
+            p--;
         }
     }
 
-    return ranking;
+    const rest = new Array(player.length - ranking.length).fill(
+        ranked.length + 1
+    );
+
+    return ranking.concat(rest).reverse();
 }
