@@ -1,13 +1,16 @@
+// O(n)
+// n: day
+
 function viralAdvertising(n) {
     // Write your code here
-    let count = 0;
+    let cumulative = 0;
     let shared = 5;
 
-    for (let dd = 0; dd < n; dd++) {
+    for (let day = 0; day < n; day++) {
         shared = Math.floor(shared / 2);
-        count += shared;
+        cumulative += shared;
         shared *= 3;
     }
 
-    return count;
+    return cumulative;
 }
