@@ -3,24 +3,17 @@
 
 function beautifulDays(i, j, k) {
     // Write your code here
-    const reverse = (num) => {
-        let temp = num;
-        let rev = 0;
-
-        while (temp) {
-            rev = rev * 10 + (temp % 10);
-            temp = Math.floor(temp / 10);
+    let result = 0;
+    for (let day = i; day <= j; day++) {
+        let reversedDay = 0;
+        let curDay = day;
+        while (curDay) {
+            reversedDay = 10 * reversedDay + (curDay % 10);
+            curDay = Math.floor(curDay / 10);
         }
-
-        return rev;
-    };
-
-    let count = 0;
-    for (let d = i; d <= j; d++) {
-        if (Math.abs(d - reverse(d)) % k === 0) {
-            count++;
+        if (Math.abs(reversedDay - day) % k === 0) {
+            result++;
         }
     }
-
-    return count;
+    return result;
 }
