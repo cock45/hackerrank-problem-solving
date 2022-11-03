@@ -1,15 +1,18 @@
+// O(n); n: lcm(c.length, k) / k
+
 function jumpingOnClouds(c, k) {
-    let e = 100;
+    let energy = 100;
+    let cloud = 0;
 
-    for (let i = k; i > 0; i += k) {
-        if (i >= c.length) {
-            i = i % c.length;
+    do {
+        cloud += k;
+
+        if (cloud >= c.length) {
+            cloud %= c.length;
         }
 
-        e -= c[i] * 2 + 1;
+        energy -= 2 * c[cloud] + 1;
+    } while (cloud);
 
-        if (i === 0) {
-            return e;
-        }
-    }
+    return energy;
 }
