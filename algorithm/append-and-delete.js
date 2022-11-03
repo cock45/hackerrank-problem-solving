@@ -1,30 +1,30 @@
-// O(n)
-// n: Math.min(sLen, tLen)
+// O(min{|s|, |t|})
 
 function appendAndDelete(s, t, k) {
     // Write your code here
-    const [sLen, tLen] = [s.length, t.length];
-    let same = 0;
+    let commonPrefixLength = 0;
 
-    for (let i = 0; i < Math.min(sLen, tLen); i++) {
-        if (s[i] !== t[i]) {
+    while (commonPrefixLength < s.length && commonPrefixLength < t.length) {
+        if (s[commonPrefixLength] !== t[commonPrefixLength]) {
             break;
         }
 
-        same++;
+        commonPrefixLength++;
     }
 
-    if (k < sLen + tLen - 2 * same) {
+    let minRequiredSteps = s.length + t.length - 2 * commonPrefixLength;
+
+    if (k < minRequiredSteps) {
         return 'No';
-    } else {
-        if (k >= sLen + tLen) {
-            return 'Yes';
-        }
+    }
 
-        if ((k - (sLen + tLen - 2 * same)) % 2) {
-            return 'No';
-        }
-
+    if (k >= s.length + t.length) {
         return 'Yes';
     }
+
+    if ((k - minRequiredSteps) & 1) {
+        return 'No';
+    }
+
+    return 'Yes';
 }
