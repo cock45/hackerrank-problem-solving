@@ -1,12 +1,13 @@
+// O(|p|)
+
 function permutationEquation(p) {
     // Write your code here
-    const y = [];
+    const xToY = new Array(p.length).fill(0);
 
-    for (let i = 1; i <= p.length; i++) {
-        let x1 = p.indexOf(i) + 1;
-        let x2 = p.indexOf(x1) + 1;
-        y.push(x2);
+    for (let i = 0; i < p.length; i++) {
+        const yToX = p[p[i] - 1];
+        xToY[yToX - 1] = i + 1;
     }
 
-    return y;
+    return xToY;
 }
