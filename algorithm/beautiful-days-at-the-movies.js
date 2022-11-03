@@ -1,5 +1,4 @@
-// O(n * m)
-// n: j - i, m: j.toString().length
+// O(j - i)
 
 function beautifulDays(i, j, k) {
     // Write your code here
