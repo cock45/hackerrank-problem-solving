@@ -1,12 +1,17 @@
+// O(1)
+
 function findDigits(n) {
     // Write your code here
     let count = 0;
-    let nToStr = n.toString();
+    let number = n;
 
-    for (let i = 0; i < nToStr.length; i++) {
-        if (n % nToStr[i] === 0) {
+    while (number) {
+        const d = number % 10;
+        if (n % d === 0) {
             count++;
         }
+
+        number = Math.floor(number / 10);
     }
 
     return count;
