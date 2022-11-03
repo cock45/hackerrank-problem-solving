@@ -1,4 +1,4 @@
-// O(1)
+// O(lg n)
 
 function findDigits(n) {
     // Write your code here
