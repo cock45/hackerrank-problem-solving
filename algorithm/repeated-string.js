@@ -1,11 +1,11 @@
-// O(|s|)
+// O(n), n is the length of s.
 
 function repeatedString(s, n) {
-    // Write your code here
-    let result = 0;
-    const freqInA = s.split('').filter((value) => value === 'a').length;
+    let result =
+        s.split('').filter((letter) => letter === 'a').length *
+        Math.floor(n / s.length);
 
-    if (freqInA === 0) {
+    if (result === 0) {
         return 0;
     }
 
@@ -14,8 +14,6 @@ function repeatedString(s, n) {
             result++;
         }
     }
-
-    result += freqInA * Math.floor(n / s.length);
 
     return result;
 }
