@@ -1,8 +1,8 @@
-// O(|arr|)
+// O(nlog(n)), n is the length of arr.
 
 function cutTheSticks(arr) {
-    // Write your code here
     arr.sort((a, b) => a - b);
+
     const result = [arr.length];
 
     for (let i = 1; i < arr.length; i++) {
