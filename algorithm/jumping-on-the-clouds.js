@@ -6,18 +6,11 @@ function jumpingOnClouds(c) {
         return 1;
     }
 
-    let result = 0;
-    let pos = 0;
-
-    while (pos < c.length - 1) {
-        if (c[pos + 2] === 0) {
-            pos += 2;
-        } else {
-            pos++;
-        }
-
-        result++;
-    }
-
-    return result;
+    return (
+        c
+            .join('')
+            .split('1')
+            .map((group) => group.length)
+            .reduce((prev, cur) => prev + Math.floor(cur / 2) + 1, 0) - 1
+    );
 }
