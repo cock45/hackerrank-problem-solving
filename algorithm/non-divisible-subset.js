@@ -1,4 +1,4 @@
-// O(max{|s|, k / 2})
+// O(|s| + k)
 
 function nonDivisibleSubset(k, s) {
     if (k === 1 || s.length === 1) {
