@@ -1,3 +1,5 @@
+// O(|obstacles|)
+
 function queensAttack(n, k, r_q, c_q, obstacles) {
     // Write your code here
     if (n < 2) {
@@ -59,7 +61,7 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
     }
 
     return endpoints.reduce(
-        (total, value, index) => total - value * Math.pow(-1, index % 2),
+        (total, value, index) => total - value * (index & 1 ? -1 : 1),
         0
     );
 }
