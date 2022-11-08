@@ -1,3 +1,5 @@
+// O(n * m)
+
 function organizingContainers(container) {
     // Write your code here
     const valueOfQueries = container
