@@ -19,7 +19,7 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
 
     if (obstacles.length === 0) {
         return endpoints.reduce(
-            (total, value, index) => total - value * Math.pow(-1, index % 2),
+            (total, value, index) => total - value * (index & 1 ? -1 : 1),
             0
         );
     }
