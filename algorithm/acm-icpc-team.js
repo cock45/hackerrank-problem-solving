@@ -1,4 +1,4 @@
-// O (|topic|! * n), n is Number of Topics
+// O (n ^ 2 * m), n is Number of Attendees, m is Number of Topics
 
 function acmTeam(topic) {
     // Write your code here
