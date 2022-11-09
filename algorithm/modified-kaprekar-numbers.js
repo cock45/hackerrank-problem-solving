@@ -11,8 +11,6 @@ function kaprekarNumbers(p, q) {
         }
 
         const square = i * i;
-        const r = (i * i) % d;
-        const l = (i * i - r) / d;
 
         if (i === Math.floor(square / d) + (square % d)) {
             result.push(i);
