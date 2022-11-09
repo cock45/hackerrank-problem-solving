@@ -8,16 +8,22 @@ function beautifulTriplets(d, arr) {
         k = 0;
 
     for (i = 0; i < arr.length - 2; i++) {
-        while (arr[j] < arr[i] + d) {
+        while (j < arr.length && arr[j] - arr[i] < d) {
             j++;
         }
-
-        while (arr[k] < arr[j] + d) {
-            k++;
+        if (j === arr.length) {
+            break;
         }
-
-        if (arr[j] === arr[i] + d && arr[k] === arr[j] + d) {
-            count++;
+        if (arr[j] - arr[i] === d) {
+            while (k < arr.length && arr[k] - arr[j] < d) {
+                k++;
+            }
+            if (k === arr.length) {
+                break;
+            }
+            if (arr[k] - arr[j] === d) {
+                count++;
+            }
         }
     }
 
