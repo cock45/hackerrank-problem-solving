@@ -1,4 +1,4 @@
-// O(n), n is q - p
+// O(q - p)
 
 function kaprekarNumbers(p, q) {
     // Write your code here
