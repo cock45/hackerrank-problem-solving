@@ -1,21 +1,21 @@
-// O(n), n is length of a
+// O(n*log(n)), n is length of a
 
 function minimumDistances(a) {
     // Write your code here
-    let mini = a.length;
+    let min = a.length;
 
-    const indicesOfSortedA = a
+    const indices = a
         .map((value, index) => [value, index])
-        .sort((a, b) => a[0] - b[0]);
+        .sort(([a], [b]) => a - b);
 
     for (let i = 1; i < a.length; i++) {
-        if (indicesOfSortedA[i][0] === indicesOfSortedA[i - 1][0]) {
-            const dist = indicesOfSortedA[i][1] - indicesOfSortedA[i - 1][1];
-            if (dist < mini) {
-                mini = dist;
+        if (indices[i][0] === indices[i - 1][0]) {
+            const dist = indices[i][1] - indices[i - 1][1];
+            if (dist < min) {
+                min = dist;
             }
         }
     }
 
-    return mini < a.length ? mini : -1;
+    return min < a.length ? min : -1;
 }
