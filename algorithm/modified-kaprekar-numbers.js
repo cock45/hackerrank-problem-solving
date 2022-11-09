@@ -17,5 +17,5 @@ function kaprekarNumbers(p, q) {
         }
     }
 
-    console.log(result.length > 0 ? result.join(' ') : 'INVALID RANGE');
+    console.log(result.join(' ') || 'INVALID RANGE');
 }
