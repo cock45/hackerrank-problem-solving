@@ -2,34 +2,40 @@
 
 function biggerIsGreater(w) {
     // Write your code here
-    let lowerPosition = -1;
+    let n = w.length,
+        i,
+        j;
 
-    for (let i = 0; i < w.length - 1; i++) {
+    // Find pivot
+    for (i = n - 2; i >= 0; i--) {
         if (w[i] < w[i + 1]) {
-            lowerPosition = i;
+            break;
         }
     }
 
-    if (lowerPosition === -1) {
+    // If pivot is not found
+    if (i < 0) {
         return 'no answer';
     }
 
-    let biggerPosition = -1;
-
-    for (let i = lowerPosition; i < w.length; i++) {
-        if (w[i] > w[lowerPosition]) {
-            biggerPosition = i;
+    // Find rightmost successor of pivot in the suffix
+    for (j = n - 1; j > i; j--) {
+        if (w[j] > w[i]) {
+            break;
         }
     }
 
-    const arrW = w.split('');
+    // Swap pivot and right most successor
+    const warr = w.split('');
+    const temp = warr[i];
+    warr[i] = warr[j];
+    warr[j] = temp;
 
-    const temp = arrW[lowerPosition];
-    arrW[lowerPosition] = arrW[biggerPosition];
-    arrW[biggerPosition] = temp;
+    // Reverse the suffix and Join
+    const suffix = warr.splice(i + 1, n - i - 1).reverse();
 
-    const arrWStart = arrW.slice(0, lowerPosition + 1);
-    const arrWEnd = arrW.slice(lowerPosition + 1).reverse();
-
-    return arrWStart.concat(arrWEnd).join('');
+    return warr
+        .splice(0, i + 1)
+        .concat(suffix)
+        .join('');
 }
