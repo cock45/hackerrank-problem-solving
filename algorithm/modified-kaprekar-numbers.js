@@ -5,16 +5,17 @@ function kaprekarNumbers(p, q) {
     let result = [];
 
     for (let i = p; i <= q; i++) {
-        let number = i;
-        let d = 0;
+        const square = i * i;
+        let l = i * i,
+            d = 1;
 
-        while (number >= 1) {
-            number /= 10;
-            d++;
+        while (l > i) {
+            d *= 10;
+            l /= d;
         }
 
-        const r = (i * i) % Math.pow(10, d);
-        const l = (i * i - r) / Math.pow(10, d);
+        const r = square % d;
+        l = (square - r) / d;
 
         if (r + l === i) {
             result.push(i);
