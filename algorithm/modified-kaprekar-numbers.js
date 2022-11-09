@@ -3,25 +3,21 @@
 function kaprekarNumbers(p, q) {
     // Write your code here
     let result = [];
-    const d = Math.floor(Math.log10(p)) + 1;
-    let divider = Math.pow(10, d);
+    const d = Math.pow(10, Math.floor(Math.log10(p)) + 1);
 
     for (let i = p; i <= q; i++) {
-        if (i >= divider) {
-            divider *= 10;
+        if (i >= d) {
+            d *= 10;
         }
 
-        const r = (i * i) % divider;
-        const l = (i * i - r) / divider;
+        const square = i * i;
+        const r = (i * i) % d;
+        const l = (i * i - r) / d;
 
-        if (r + l === i) {
+        if (i === Math.floor(square / d) + (square % d)) {
             result.push(i);
         }
     }
 
-    if (result.length === 0) {
-        console.log('INVALID RANGE');
-    } else {
-        console.log(result.join(' '));
-    }
+    console.log(result.length > 0 ? result.join(' ') : 'INVALID RANGE');
 }
