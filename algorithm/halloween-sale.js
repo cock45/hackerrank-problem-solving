@@ -6,7 +6,7 @@ function howManyGames(p, d, m, s) {
 
     while (s >= p) {
         s -= p;
-        p = p > m + d ? p - d : m;
+        p = Math.max(p - d, m);
         count++;
     }
 
