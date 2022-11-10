@@ -1,14 +1,13 @@
 // O(log m (n/c))
 
 function chocolateFeast(n, c, m) {
-    let result = 0;
-    let bars = Math.floor(n / c);
-    let wrappers = bars;
+    let result = Math.floor(n / c);
+    let wrappers = result;
 
-    while (bars) {
-        result += bars;
-        bars = Math.floor(wrappers / m);
-        wrappers = bars + (wrappers % m);
+    while (wrappers >= m) {
+        const free = Math.floor(wrappers / m);
+        result += free;
+        wrappers = (wrappers % m) + free;
     }
 
     return result;
