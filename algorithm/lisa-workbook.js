@@ -3,19 +3,16 @@
 function workbook(n, k, arr) {
     let result = 0;
     let startPage = 1;
-    const indices = [
-        1,
-        ...arr.map((value) => (startPage += Math.ceil(value / k))),
-    ];
 
-    for (let i = 0; i < indices.length - 1; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let firstProblem = 1;
-        for (let p = indices[i]; p < indices[i + 1]; p++) {
+        for (let p = startPage; p < startPage + arr[i]; p++) {
             if (p >= firstProblem && p < firstProblem + k && p <= arr[i]) {
                 result++;
             }
             firstProblem += k;
         }
+        startPage += Math.ceil(arr[i] / k);
     }
 
     return result;
