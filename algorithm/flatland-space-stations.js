@@ -2,8 +2,8 @@
 
 function flatlandSpaceStations(n, c) {
     c.sort((a, b) => a - b);
+
     const space = [-c[0], ...c, 2 * (n - 1) - c.at(-1)];
-    console.log(space);
 
     let max = 0;
 
