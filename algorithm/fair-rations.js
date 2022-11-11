@@ -2,14 +2,13 @@
 
 function fairRations(B) {
     let result = 0;
-    let count = 0;
 
-    for (let i = 0; i < B.length; i++) {
+    for (let i = 0; i < B.length - 1; i++) {
         if (B[i] & 1) {
-            count++;
-            result += 2 * (count & 1 ? -1 : 1) * i;
+            B[i + 1]++;
+            result += 2;
         }
     }
 
-    return count & 1 ? "NO" : result;
+    return B.at(-1) & 1 ? "NO" : result;
 }
