@@ -6,7 +6,7 @@ function workbook(n, k, arr) {
 
     for (let i = 0; i < arr.length; i++) {
         let firstProblem = 1;
-        for (let p = startPage; p < startPage + arr[i]; p++) {
+        for (let p = startPage; p < startPage + Math.ceil(arr[i] / k); p++) {
             if (p >= firstProblem && p < firstProblem + k && p <= arr[i]) {
                 result++;
             }
