@@ -1,4 +1,4 @@
-// O(n), n is length of arr
+// O(∑(arr))
 
 function workbook(n, k, arr) {
     let result = 0;
