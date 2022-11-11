@@ -1,4 +1,4 @@
-// O(∑(arr))
+// O(∑(arr) / k)
 
 function workbook(n, k, arr) {
     let result = 0;
