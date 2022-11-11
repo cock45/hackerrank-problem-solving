@@ -2,18 +2,22 @@
 
 function workbook(n, k, arr) {
     let result = 0;
-    let startPage = 1;
+    let page = 1;
 
-    for (let i = 0; i < arr.length; i++) {
-        let firstProblem = 1;
+    for (let i = 0; i < n; i++) {
+        let startProblem = 1;
         const numberOfPages = Math.ceil(arr[i] / k);
-        for (let p = startPage; p < startPage + numberOfPages; p++) {
-            if (p >= firstProblem && p < firstProblem + k && p <= arr[i]) {
+        while (numberOfPages--) {
+            if (
+                page >= startProblem &&
+                page < startProblem + k &&
+                page <= arr[i]
+            ) {
                 result++;
             }
-            firstProblem += k;
+            startProblem += k;
+            page++;
         }
-        startPage += numberOfPages;
     }
 
     return result;
