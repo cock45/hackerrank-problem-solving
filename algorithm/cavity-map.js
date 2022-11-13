@@ -1,26 +1,23 @@
 // O(n * n), n is length of grid
 
 function cavityMap(grid) {
-    for (let i = 0; i < grid.length; i++) {
-        const row = grid[i].split("");
+    const map = grid.map((row) => row.split(""));
+    const delta = [
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1],
+    ];
 
-        for (let j = 0; j < grid.length; j++) {
+    for (let r = 1; r < grid.length - 1; r++) {
+        for (let c = 1; c < grid.length - 1; c++) {
             if (
-                i !== 0 &&
-                i !== grid.length - 1 &&
-                j !== 0 &&
-                j !== grid.length - 1 &&
-                row[j] > grid[i - 1][j] &&
-                row[j] > grid[i + 1][j] &&
-                row[j] > row[j - 1] &&
-                row[j] > row[j + 1]
+                delta.every(([dr, dc]) => +grid[r][c] > +grid[r + dr][c + dc])
             ) {
-                row[j] = "X";
+                map[r][c] = "X";
             }
         }
-
-        grid[i] = row.join("");
     }
 
-    return grid;
+    return map.map((row) => row.join(""));
 }
