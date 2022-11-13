@@ -2,15 +2,15 @@
 
 function stones(n, a, b) {
     // Write your code here
-    if (a === b) {
-        return [(n - 1) * a];
-    }
-    const result = [];
-    const big = a > b ? a : b;
-    const small = a < b ? a : b;
+    const [max, min] = [Math.max(a, b), Math.min(a, b)];
+    const result = [min * (n - 1)];
 
-    for (let i = 0; i < n; i++) {
-        result.push(i * big + (n - i - 1) * small);
+    if (a === b) {
+        return result;
+    }
+
+    for (let i = 1; i < n; i++) {
+        result.push(result[i - 1] + (max - min));
     }
 
     return result;
