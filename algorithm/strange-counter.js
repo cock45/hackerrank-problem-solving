@@ -1,4 +1,4 @@
-// log(t)
+// O(log t)
 
 function strangeCounter(t) {
     // Write your code here
