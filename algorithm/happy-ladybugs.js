@@ -1,8 +1,6 @@
 // O(n), n is the length of b
 
 function happyLadybugs(b) {
-    const types = new Array(26).fill(0);
-
     if (!b.includes("_")) {
         if (b[0] !== b[1] || b.at(-1) !== b.at(-2)) {
             return "NO";
@@ -16,6 +14,8 @@ function happyLadybugs(b) {
 
         return "YES";
     }
+
+    const types = new Array(26).fill(0);
 
     for (let i = 0; i < b.length; i++) {
         if (b[i] !== "_") {
