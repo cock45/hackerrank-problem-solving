@@ -19,7 +19,7 @@ function happyLadybugs(b) {
 
     for (let i = 0; i < b.length; i++) {
         if (b[i] !== "_") {
-            types[b.charCodeAt(i) - 65]++;
+            types[b.charCodeAt(i) - 0x41]++;
         }
     }
 
