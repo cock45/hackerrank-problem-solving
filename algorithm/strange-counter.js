@@ -3,12 +3,12 @@
 function strangeCounter(t) {
     // Write your code here
     let startNum = 3;
-    let index = t;
+    let time = t;
 
-    while (index > startNum) {
-        index -= startNum;
+    while (time > startNum) {
+        time -= startNum;
         startNum *= 2;
     }
 
-    return startNum - index + 1;
+    return startNum - time + 1;
 }
