@@ -2,14 +2,11 @@
 
 function decentNumber(n) {
     const r = n % 3;
+    const numOfThrees = r === 0 ? 0 : r === 1 ? 10 : 5;
 
     if (n < 5 + 3 && n % 5 && n % 3) {
         console.log(-1);
-    } else if (r === 0) {
-        console.log("5".repeat(n));
-    } else if (r === 1) {
-        console.log("5".repeat(n - 10) + "3".repeat(5 * 2));
     } else {
-        console.log("5".repeat(n - 5) + "3".repeat(5));
+        console.log("5".repeat(n - numOfThrees) + "3".repeat(numOfThrees));
     }
 }
