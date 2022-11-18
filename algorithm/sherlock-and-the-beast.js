@@ -1,8 +1,7 @@
 // Time Complexity is O(1)
 
 function decentNumber(n) {
-    const r = n % 3;
-    const numOfThrees = r === 0 ? 0 : r === 1 ? 10 : 5;
+    const numOfThrees = [0, 10, 5][n % 3];
 
     console.log(
         n < numOfThrees
