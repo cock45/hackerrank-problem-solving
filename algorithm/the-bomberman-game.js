@@ -1,55 +1,46 @@
-// O(rc), r, c are number of rows and columns of grid
+// Time complexity - O(RC), here RC is the size of the grid.
 
 function bomberMan(n, grid) {
-    const [r, c] = [grid.length, grid[0].length];
+    const [R, C] = [grid.length, grid[0].length];
 
     if (n === 1) {
         return grid;
-    } else if (n % 2 === 0) {
-        return grid.map((row) => Array.from(row).fill("O").join(""));
     }
 
-    let garr = grid.map((row) =>
-        Array.from(row).map((value) => {
-            if (value === "O") {
-                return 1;
-            }
-            return 0;
-        })
-    );
+    if (n % 2 === 0) {
+        return grid.map(() => "O".repeat(C));
+    }
 
-    for (let s = 1; s <= (n - 2) % 4; s += 2) {
-        const step = new Array(r).fill(null).map(() => new Array(c).fill(1));
-        for (let i = 0; i < r; i++) {
-            for (let j = 0; j < c; j++) {
-                if (garr[i][j] === 1) {
-                    step[i][j] = 0;
-                    if (i > 0) {
-                        step[i - 1][j] = 0;
-                    }
-                    if (i < r - 1) {
-                        step[i + 1][j] = 0;
-                    }
-                    if (j > 0) {
-                        step[i][j - 1] = 0;
-                    }
-                    if (j < c - 1) {
-                        step[i][j + 1] = 0;
+    const detonate = (state) => {
+        const delta = [
+            [0, 0],
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1],
+        ];
+
+        const nextState = new Array(R)
+            .fill(null)
+            .map(() => new Array(C).fill("O"));
+
+        for (let i = 0; i < R; i++) {
+            for (let j = 0; j < C; j++) {
+                if (state[i][j] === "O") {
+                    for (const [dr, dc] of delta) {
+                        const [x, y] = [i + dr, j + dc];
+                        if (x >= 0 && x < R && y >= 0 && y < C) {
+                            nextState[x][y] = ".";
+                        }
                     }
                 }
             }
         }
-        [...garr] = [...step];
-    }
 
-    return garr.map((row) =>
-        row
-            .map((value) => {
-                if (value === 1) {
-                    return "O";
-                }
-                return ".";
-            })
-            .join("")
-    );
+        return nextState;
+    };
+
+    const state = detonate(grid);
+
+    return (n % 4 === 3 ? state : detonate(state)).map((row) => row.join(""));
 }
