@@ -1,23 +1,23 @@
 // Time Complexity is O(logn), n is length of arr
 
 function introTutorial(V, arr) {
-    function binarySearch(arr, x, low, high) {
-        if (low > high) {
-            return -1;
-        }
+    let [low, high] = [0, arr.length - 1];
 
+    while (low < high) {
         const mid = Math.floor((low + high) / 2);
 
-        if (x === arr[mid]) {
+        if (arr[mid] === V) {
             return mid;
         }
 
-        if (x > arr[mid]) {
-            return binarySearch(arr, x, mid + 1, high);
+        if (V > arr[mid]) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
 
-        return binarySearch(arr, x, low, mid);
+        if (arr[high] === V) {
+            return high;
+        }
     }
-
-    return binarySearch(arr, V, 0, arr.length - 1);
 }
