@@ -3,13 +3,13 @@
 function larrysArray(A) {
     let count = 0;
 
-    for (let i = 0; i < A.length; i++) {
-        for (let j = i; j < A.length; j++) {
+    for (let i = 0; i < A.length - 1; i++) {
+        for (let j = i + 1; j < A.length; j++) {
             if (A[i] > A[j]) {
                 count++;
             }
         }
     }
 
-    return count % 2 ? "NO" : "YES";
+    return ["YES", "NO"][count % 2];
 }
