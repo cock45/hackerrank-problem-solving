@@ -15,9 +15,11 @@ function introTutorial(V, arr) {
         } else {
             high = mid - 1;
         }
-
-        if (arr[high] === V) {
-            return high;
-        }
     }
+
+    if (arr[high] === V) {
+        return high;
+    }
+
+    return -1;
 }
