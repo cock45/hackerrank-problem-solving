@@ -17,9 +17,5 @@ function introTutorial(V, arr) {
         }
     }
 
-    if (arr[high] === V) {
-        return high;
-    }
-
-    return -1;
+    return arr[high] === V ? high : -1;
 }
