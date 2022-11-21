@@ -1,18 +1,15 @@
 // Time Complexity is O(n);
 
 function superReducedString(s) {
-    let result = [];
+    const stk = [];
 
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === s[i + 1]) {
-            i++;
-            continue;
-        } else if (s[i] === result[result.length - 1] && result.length > 0) {
-            result.length--;
+    for (const letter of s) {
+        if (stk.length === 0 || letter !== stk.at(-1)) {
+            stk.push(letter);
         } else {
-            result.push(s[i]);
+            stk.pop();
         }
     }
 
-    return result.length ? result.join("") : "Empty String";
+    return stk.join("") || "Empty String";
 }
