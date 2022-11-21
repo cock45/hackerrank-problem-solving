@@ -1,10 +1,6 @@
 // Time Complexity is O(|A|^2)
 
 function larrysArray(A) {
-    if (A.every((value, index) => value === index + 1)) {
-        return "YES";
-    }
-
     let count = 0;
 
     for (let i = 0; i < A.length; i++) {
