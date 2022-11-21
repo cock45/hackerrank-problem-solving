@@ -3,7 +3,7 @@
 function introTutorial(V, arr) {
     function binarySearch(arr, x, low, high) {
         if (low > high) {
-            return false;
+            return -1;
         }
 
         const mid = Math.floor((low + high) / 2);
