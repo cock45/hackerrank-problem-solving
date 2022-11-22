@@ -1,42 +1,52 @@
 // O(nlogn), n is length of arr
 
 function almostSorted(arr) {
-    const sorted = [...arr].sort((a, b) => a - b);
-
-    let diff = 0,
-        [l, r] = [-1, -1];
-
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== sorted[i]) {
-            diff++;
-            if (l === -1) {
-                l = i;
-            } else {
-                r = i;
+    function mismatch(start, end, direction) {
+        let [h, t] = [-1, -1];
+        for (let i = start; i < end; i++) {
+            if ((arr[i] - arr[i + 1]) * direction < 0) {
+                h = i;
+                break;
             }
+        }
+
+        for (let i = end; i > start; i--) {
+            if ((arr[i] - arr[i - 1]) * direction > 0) {
+                t = i;
+                break;
+            }
+        }
+
+        return [h, t];
+    }
+
+    const [head, tail] = mismatch(0, arr.length - 1, -1);
+
+    if (head >= tail) {
+        return console.log("yes");
+    }
+
+    let [h, t] = mismatch(head + 1, tail - 1, -1);
+    if (h >= t) {
+        if (
+            (head === 0 || arr[head - 1] < arr[tail]) &&
+            (tail === arr.length - 1 || arr[head] < arr[tail + 1]) &&
+            arr[tail] <= arr[head + 1] &&
+            arr[head] >= arr[tail - 1]
+        ) {
+            return console.log(`yes\nswap ${head + 1} ${tail + 1}`);
         }
     }
 
-    if (diff === 0) {
-        console.log("yes");
-        return;
-    }
-
-    if (diff === 2 && arr[l] === sorted[r]) {
-        console.log(`yes\nswap ${l + 1} ${r + 1}`);
-        return;
-    }
-
-    if (diff > 2) {
-        for (let i = l; i <= r; i++) {
-            if (arr[i] !== sorted[r + l - i]) {
-                console.log("no");
-                return;
-            }
+    [h, t] = mismatch(head, tail, 1);
+    if (h >= t) {
+        if (
+            (tail === arr.length - 1 || arr[head] <= arr[tail + 1]) &&
+            (head === 0 || arr[tail] >= arr[head - 1])
+        ) {
+            return console.log(`yes\nreverse ${head + 1} ${tail + 1}`);
         }
-        console.log(`yes\nreverse ${l + 1} ${r + 1}`);
-        return;
     }
 
-    console.log("no");
+    return console.log("no");
 }
