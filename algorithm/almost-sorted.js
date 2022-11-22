@@ -1,4 +1,4 @@
-// O(nlogn), n is length of arr
+// O(|arr|)
 
 function almostSorted(arr) {
     function mismatch(start, end, direction) {
