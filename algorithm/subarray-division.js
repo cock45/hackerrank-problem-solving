@@ -5,17 +5,15 @@ function birthday(s, d, m) {
         return 0;
     }
 
-    let count = 0;
     let sum = s.slice(0, m).reduce((prev, cur) => prev + cur, 0);
+    let count = sum === d ? 1 : 0;
 
     for (let i = m; i <= s.length; i++) {
         if (sum === d) {
             count++;
         }
 
-        if (i < s.length) {
-            sum += s[i] - s[i - m];
-        }
+        sum += s[i] - s[i - m];
     }
 
     return count;
