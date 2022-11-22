@@ -2,17 +2,15 @@
 
 function almostSorted(arr) {
     function mismatch(start, end, direction) {
-        let [h, t] = [-1, -1];
-        for (let i = start; i < end; i++) {
-            if ((arr[i] - arr[i + 1]) * direction < 0) {
-                h = i;
+        let h, t;
+        for (let h = start; h < end; h++) {
+            if ((arr[h] - arr[h + 1]) * direction < 0) {
                 break;
             }
         }
 
-        for (let i = end; i > start; i--) {
-            if ((arr[i] - arr[i - 1]) * direction > 0) {
-                t = i;
+        for (let t = end; t > start; t--) {
+            if ((arr[t] - arr[t - 1]) * direction > 0) {
                 break;
             }
         }
