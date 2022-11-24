@@ -1,22 +1,11 @@
 // Time Complexity is O(n * m), m is length of special_characters
 
 function minimumNumber(n, password) {
-    let [number, lower, upper, special] = [0, 0, 0, 0];
-    const special_characters = "!@#$%^&*()-+";
+    const patterns = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*()\-+]/];
+    const match = patterns.reduce(
+        (c, pattern) => (c = password.search(pattern) > -1 ? c + 1 : c),
+        0
+    );
 
-    for (const index in password) {
-        const ascii = password.charCodeAt(index);
-
-        if (ascii >= 0x30 && ascii <= 0x39) {
-            number = 1;
-        } else if (ascii >= 0x41 && ascii <= 0x5a) {
-            upper = 1;
-        } else if (ascii > 0x61 && ascii <= 0x7a) {
-            lower = 1;
-        } else if (special_characters.indexOf(password[index]) > -1) {
-            special = 1;
-        }
-    }
-
-    return Math.max(4 - number - lower - upper - special, 6 - n);
+    return Math.max(4 - match, 6 - n);
 }
