@@ -1,4 +1,4 @@
-// Time Complexity is O(n * m), m is length of special_characters
+// Time Complexity is O(n), m is length of special_characters
 
 function minimumNumber(n, password) {
     const patterns = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*()\-+]/];
