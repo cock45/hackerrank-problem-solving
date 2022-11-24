@@ -2,10 +2,7 @@
 
 function minimumNumber(n, password) {
     const patterns = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*()\-+]/];
-    const match = patterns.reduce(
-        (c, pattern) => (c = password.search(pattern) > -1 ? c + 1 : c),
-        0
-    );
-
-    return Math.max(4 - match, 6 - n);
+    const minLength =
+        n + patterns.filter((pattern) => password.search(pattern) < 0).length;
+    return Math.max(minLength - n, 6 - n);
 }
