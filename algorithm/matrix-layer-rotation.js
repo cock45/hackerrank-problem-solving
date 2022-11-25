@@ -2,31 +2,31 @@
 // Here n, m are row and col number of matrix
 
 function matrixRotation(matrix, r) {
-    const [row, col] = [matrix.length, matrix[0].length];
-    const result = new Array(row).fill(null).map(() => new Array(col).fill(0));
+    const [m, n] = [matrix.length, matrix[0].length];
+    const result = new Array(m).fill(null).map(() => new Array(n).fill(0));
 
-    for (let layer = 0; 2 * layer < row && 2 * layer < col; layer++) {
-        const circle = [];
+    for (let dp = 0; 2 * dp < m && 2 * dp < n; dp++) {
+        const layer = [];
 
-        for (let y = layer; y < row - layer - 1; y++) {
-            circle.push([y, layer]);
+        for (let y = dp; y < m - dp - 1; y++) {
+            layer.push([y, dp]);
         }
 
-        for (let x = layer; x < col - layer - 1; x++) {
-            circle.push([row - layer - 1, x]);
+        for (let x = dp; x < n - dp - 1; x++) {
+            layer.push([m - dp - 1, x]);
         }
 
-        for (let y = row - layer - 1; y > layer; y--) {
-            circle.push([y, col - layer - 1]);
+        for (let y = m - dp - 1; y > dp; y--) {
+            layer.push([y, n - dp - 1]);
         }
 
-        for (let x = col - layer - 1; x > layer; x--) {
-            circle.push([layer, x]);
+        for (let x = n - dp - 1; x > dp; x--) {
+            layer.push([dp, x]);
         }
 
-        for (let k = 0; k < circle.length; k++) {
-            const [y, x] = circle[k];
-            const [ny, nx] = circle[(r + k) % circle.length];
+        for (let k = 0; k < layer.length; k++) {
+            const [y, x] = layer[k];
+            const [ny, nx] = layer[(r + k) % layer.length];
             result[ny][nx] = matrix[y][x];
         }
     }
