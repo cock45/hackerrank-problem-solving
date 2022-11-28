@@ -13,7 +13,8 @@ function quickSort(arr) {
         }
     }
 
-    [arr[0], arr[i]] = [arr[i], arr[0]];
+    arr[0] = arr[i];
+    arr[i] = pivot;
 
     return arr;
 }
