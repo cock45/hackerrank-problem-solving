@@ -1,18 +1,19 @@
-// Time Complexity is O(n^2)
+// Time Complexity is O(n)
 // Here n is length of arr
 
 function quickSort(arr) {
     const pivot = arr[0];
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < pivot) {
-            const value = arr[i];
-            for (let j = i - 1; j >= 0 && arr[j] >= pivot; j--) {
-                arr[j + 1] = arr[j];
-                arr[j] = value;
-            }
+    let i = arr.length - 1;
+
+    for (let j = arr.length - 1; j >= 0; j--) {
+        if (arr[j] > pivot) {
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            i--;
         }
     }
+
+    [arr[0], arr[i]] = [arr[i], arr[0]];
 
     return arr;
 }
