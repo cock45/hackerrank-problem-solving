@@ -9,4 +9,6 @@ function funnyString(s) {
             return "Not Funny";
         }
     }
+
+    return "Funny";
 }
