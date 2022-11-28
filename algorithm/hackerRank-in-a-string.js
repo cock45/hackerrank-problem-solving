@@ -1,15 +1,13 @@
 // Time Complexity is O(|s|)
 
 function hackerrankInString(s) {
-    const word = "hackerrank";
+    const hackerrank = "hackerrank";
 
-    let p = 0;
-
-    for (const letter of s) {
-        if (letter === word[p]) {
-            p++;
+    for (let i = 0, k = 0; i < s.length; i++) {
+        if (s[i] === hackerrank[k] && ++k === hackerrank.length) {
+            return "YES";
         }
     }
 
-    return p === word.length ? "YES" : "NO";
+    return "NO";
 }
