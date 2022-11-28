@@ -6,9 +6,7 @@ function weightedUniformStrings(s, queries) {
 
     const freq = new Array(27).fill(0);
 
-    let [head, tail] = [0, 0];
-
-    while (tail < s.length) {
+    for (let head = 0, tail = 0; tail < s.length; tail++) {
         if (s[tail] !== s[head]) {
             head = tail;
         }
@@ -16,8 +14,6 @@ function weightedUniformStrings(s, queries) {
         if (freq[codes[tail]] < tail - head + 1) {
             freq[codes[tail]] = tail - head + 1;
         }
-
-        tail++;
     }
 
     return queries.map((value) => {
