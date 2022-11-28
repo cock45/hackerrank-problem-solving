@@ -1,17 +1,21 @@
 // Time Complexity is O(|s|^2)
 
 function separateNumbers(s) {
-    for (let subLen = 1; 2 * subLen <= s.length; subLen++) {
-        let x = BigInt(s.slice(0, subLen));
+    for (let i = 1; 2 * i <= s.length; i++) {
+        const startNum = s.slice(0, i);
 
-        let newStr = "";
+        let pos = 0;
 
-        while (newStr.length < s.length) {
-            newStr += x++;
+        for (
+            let num = BigInt(startNum);
+            pos < s.length && s.startsWith(num, pos);
+            num++
+        ) {
+            pos += num.toString().length;
         }
 
-        if (newStr === s) {
-            return console.log("YES", s.slice(0, subLen));
+        if (pos === s.length) {
+            return console.log("YES", startNum);
         }
     }
 
