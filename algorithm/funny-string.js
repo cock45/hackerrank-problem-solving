@@ -1,16 +1,12 @@
 // Time Complexity is O(|s|)
 
 function funnyString(s) {
-    const codes = Array.from(s).map((letter) => letter.charCodeAt(0));
-
-    for (let i = 1; i < s.length; i++) {
+    for (let head = 0, tail = s.length - 1; head < tail; head++, tail--) {
         if (
-            Math.abs(codes[i] - codes[i - 1]) !==
-            Math.abs(codes[s.length - i] - codes[s.length - i - 1])
+            Math.abs(s.charCodeAt(head + 1) - s.charCodeAt(head)) !=
+            Math.abs(s.charCodeAt(tail - 1) - s.charCodeAt(tail))
         ) {
             return "Not Funny";
         }
     }
-
-    return "Funny";
 }
