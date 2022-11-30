@@ -4,14 +4,15 @@
 function findMedian(arr) {
     const n = Math.ceil(arr.length / 2);
 
-    function quickSelect(n, subArr) {
-        if (n === 1 && subArr.length === 1) {
-            return subArr[0];
+    function quickSelect(n, subArr, target) {
+        if (subArr.every((value) => value === target)) {
+            return target;
         }
 
         let L = [],
             R = [];
         const pivot = Math.floor(Math.random() * subArr.length);
+        const x = subArr[pivot];
 
         for (const val of subArr) {
             if (val > subArr[pivot]) {
@@ -21,17 +22,14 @@ function findMedian(arr) {
             }
         }
 
-        if (
-            L.length === n ||
-            (L.length > n && L.every((value) => value === subArr[pivot]))
-        ) {
+        if (L.length === n) {
             return subArr[pivot];
         } else if (L.length < n) {
-            return quickSelect(n - L.length, R);
+            return quickSelect(n - L.length, R, x);
         } else {
-            return quickSelect(n, L);
+            return quickSelect(n, L, x);
         }
     }
 
-    return quickSelect(n, arr);
+    return quickSelect(n, arr, 0);
 }
