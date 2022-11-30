@@ -2,8 +2,8 @@
 
 function palindromeIndex(s) {
     function isPalindrome(head, tail) {
-        for (let i = head, j = tail; i < j; i++, j--) {
-            if (s[i] !== s[j]) {
+        while (head < tail) {
+            if (s[head++] !== s[tail--]) {
                 return false;
             }
         }
