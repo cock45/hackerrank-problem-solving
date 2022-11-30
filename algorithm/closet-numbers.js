@@ -1,4 +1,4 @@
-// Time Complexity is O(n)
+// Time Complexity is O(nlogn)
 // Here n is length of arr
 
 function closestNumbers(arr) {
