@@ -15,7 +15,7 @@ function lilysHomework(arr) {
         let cycles = 0;
 
         for (let i = 0; i < n; i++) {
-            if (vst[x]) {
+            if (!vst[i]) {
                 cycles++;
                 for (let x = i; !vst[x]; x = p[arr[x]]) {
                     vst[x] = true;
