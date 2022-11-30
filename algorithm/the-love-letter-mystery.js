@@ -3,10 +3,9 @@
 
 function theLoveLetterMystery(s) {
     let count = 0;
-    const n = s.length;
 
-    for (let i = 0; 2 * i < n; i++) {
-        count += Math.abs(s.charCodeAt(i) - s.charCodeAt(n - i - 1));
+    for (let head = 0, tail = s.length - 1; head < tail; head++, tail--) {
+        count += Math.abs(s.charCodeAt(head) - s.charCodeAt(tail));
     }
 
     return count;
