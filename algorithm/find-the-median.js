@@ -2,32 +2,38 @@
 // Here n is length of arr
 
 function findMedian(arr) {
-    let n = Math.ceil(arr.length / 2);
-    let mid = arr[0];
+    const partition = (low, high) => {
+        const pivot = arr[high];
+        let i = low;
 
-    while (arr.length !== n && !arr.every((v) => v === mid)) {
-        const pivot = Math.floor(Math.random() * arr.length);
-        mid = arr[pivot];
-
-        const L = [],
-            R = [];
-        for (const val of arr) {
-            if (val > mid) {
-                R.push(val);
-            } else {
-                L.push(val);
+        for (let j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+                i++;
             }
         }
 
-        if (L.length === n) {
-            return mid;
-        } else if (L.length < n) {
-            arr = R;
-            n -= L.length;
+        arr[high] = arr[i];
+        arr[i] = pivot;
+
+        return i;
+    };
+
+    let left = 0,
+        right = arr.length - 1,
+        k = (arr.length + 1) / 2;
+
+    while (true) {
+        const mid = partition(left, right);
+        const len = mid - left + 1;
+
+        if (len === k) {
+            return arr[mid];
+        } else if (len > k) {
+            right = mid - 1;
         } else {
-            arr = L;
+            left = mid + 1;
+            k -= len;
         }
     }
-
-    return mid;
 }
