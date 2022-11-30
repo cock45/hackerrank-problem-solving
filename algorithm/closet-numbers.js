@@ -2,19 +2,12 @@
 // Here n is length of arr
 
 function closestNumbers(arr) {
-    const sorted = arr.sort((a, b) => a - b);
-    let min = Infinity;
-    const result = [];
+    arr.sort((a, b) => a - b);
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] - arr[i - 1] < min) {
-            min = arr[i] - arr[i - 1];
-            result.length = 0;
-            result.push(arr[i - 1], arr[i]);
-        } else if (arr[i] - arr[i - 1] === min) {
-            result.push(arr[i - 1], arr[i]);
-        }
-    }
+    const minDiff = Math.min(...arr.slice(1).map((v, i) => v - arr[i]));
 
-    return result;
+    return arr
+        .slice(1)
+        .map((v, i) => (v - arr[i] === minDiff ? [arr[i], v] : []))
+        .flat();
 }
