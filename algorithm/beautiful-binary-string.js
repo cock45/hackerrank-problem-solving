@@ -1,5 +1,5 @@
 // Time Complexity is O(|b|)
 
 function beautifulBinaryString(b) {
-    return (b.split("010").length - 1) | 0;
+    return [...b.matchAll("010")].length;
 }
