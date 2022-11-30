@@ -5,35 +5,29 @@ function lilysHomework(arr) {
     const n = arr.length;
 
     function countSwap(target) {
-        const used = new Array(n).fill(0);
+        const vst = new Array(n).fill(0);
         const p = {};
 
         for (let [i, v] of target.entries()) {
             p[v] = i;
         }
 
-        let cur = 0;
+        let cycles = 0;
 
         for (let i = 0; i < n; i++) {
-            let x = i;
-
-            if (used[x]) {
-                continue;
+            if (vst[x]) {
+                cycles++;
+                for (let x = i; !vst[x]; x = p[arr[x]]) {
+                    vst[x] = true;
+                }
             }
-
-            while (!used[x]) {
-                used[x] = 1;
-                x = p[arr[x]];
-            }
-
-            cur++;
         }
 
-        return n - cur;
+        return n - cycles;
     }
 
-    const swap1 = countSwap([...arr].sort((a, b) => a - b));
-    const swap2 = countSwap([...arr].sort((a, b) => b - a));
-
-    return Math.min(swap1, swap2);
+    return Math.min(
+        countSwap([...arr].sort((a, b) => a - b)),
+        countSwap([...arr].sort((a, b) => b - a))
+    );
 }
