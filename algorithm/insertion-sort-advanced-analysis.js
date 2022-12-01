@@ -3,8 +3,8 @@
 // And m is maximum number in |arr|
 
 function insertionSort(arr) {
-    const N = Math.max(...arr);
-    const c = new Array(N + 1).fill(0);
+    const M = Math.max(...arr);
+    const c = new Array(M + 1).fill(0);
 
     function sum(index) {
         let sum = 0;
@@ -22,11 +22,11 @@ function insertionSort(arr) {
         }
     }
 
-    const M = arr.length;
-    let result = (M * (M - 1)) / 2;
-    for (let i = 0; i < M; i++) {
+    const N = arr.length;
+    let result = (N * (N - 1)) / 2;
+    for (let i = 0; i < N; i++) {
         result -= sum(arr[i]);
-        update(N, arr[i], 1);
+        update(M, arr[i], 1);
     }
 
     return result;
