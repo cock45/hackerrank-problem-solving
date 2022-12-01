@@ -2,36 +2,43 @@
 // Here n is length of expenditure
 
 function activityNotifications(expenditure, d) {
-    let notifications = 0;
-
-    const spent = new Array(201).fill(0);
+    const M = 200;
+    const bucket = new Array(M + 1).fill(0);
     for (let i = 0; i < d; i++) {
-        ++spent[expenditure[i]];
+        ++bucket[expenditure[i]];
     }
-    const mid = d % 2 ? (d + 1) / 2 : d / 2 + 1;
 
-    for (let i = d; i < expenditure.length; i++) {
-        let median = 0;
-        let j = 0,
-            count = 0;
-        while (count < mid) {
-            count += spent[j];
-            if ((d % 2 === 0 && count === mid - 1) || d % 2 !== 0) {
-                median = j;
+    function median() {
+        let count = 0;
+
+        if (d % 2) {
+            for (let i = 0; i <= M; i++) {
+                count += bucket[i];
+                if (2 * count > d) {
+                    return 2 * i;
+                }
             }
-            j++;
+        } else {
+            let result = -1;
+            for (let i = 0; i <= M; i++) {
+                count += bucket[i];
+                if (2 * count === d) {
+                    result = i;
+                } else if (2 * count > d) {
+                    return result < 0 ? 2 * i : result + i;
+                }
+            }
         }
+    }
 
-        if (d % 2 === 0) {
-            median = median ? (median + --j) / 2 : --j;
-        }
-
-        ++spent[expenditure[i]];
-        --spent[expenditure[i - d]];
-
-        if (expenditure[i] >= 2 * median) {
+    let notifications = 0;
+    for (let i = d; i < expenditure.length; i++) {
+        if (expenditure[i] >= median()) {
             notifications++;
         }
+
+        ++bucket[expenditure[i]];
+        --bucket[expenditure[i - d]];
     }
 
     return notifications;
