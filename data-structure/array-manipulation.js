@@ -3,7 +3,7 @@
 // And m is length of queries
 
 function arrayManipulation(n, queries) {
-    const arr = new Array(n + 1).fill(0);
+    const arr = new Array(n + 2).fill(0);
 
     for (const [a, b, k] of queries) {
         arr[a] += k;
