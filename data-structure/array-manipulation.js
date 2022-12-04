@@ -12,8 +12,8 @@ function arrayManipulation(n, queries) {
         }
     }
 
-    for (let i = 1; i < n; i++) {
-        arr[i + 1] += arr[i];
+    for (let i = 1; i <= n; i++) {
+        arr[i] += arr[i - 1];
     }
 
     let max = 0;
