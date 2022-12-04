@@ -16,5 +16,12 @@ function arrayManipulation(n, queries) {
         arr[i + 1] += arr[i];
     }
 
-    return arr.reduce((max, cur) => (cur > max ? cur : max), 0);
+    let max = 0;
+    for (let i = 1; i < n + 1; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
 }
