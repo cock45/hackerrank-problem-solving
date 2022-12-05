@@ -5,7 +5,7 @@ function insertNodeAtPosition(llist, data, position) {
     const newNode = new SinglyLinkedListNode(data);
 
     if (position === 0) {
-        newNode.next === llist;
+        newNode.next = llist;
         return newNode;
     }
 
