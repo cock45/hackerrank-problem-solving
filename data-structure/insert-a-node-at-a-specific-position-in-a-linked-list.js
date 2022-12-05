@@ -15,13 +15,9 @@ function insertNodeAtPosition(llist, data, position) {
         curNode = curNode.next;
     }
 
-    if (curNode.next === null) {
-        curNode.next = newNode;
-    } else {
-        const temp = curNode.next;
-        curNode.next = newNode;
-        newNode.next = temp;
-    }
+    const temp = curNode.next;
+    curNode.next = newNode;
+    newNode.next = temp;
 
     return llist;
 }
