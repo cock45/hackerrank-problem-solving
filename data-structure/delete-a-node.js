@@ -1,10 +1,6 @@
 // Time Complexity is O(position)
 
 function deleteNode(llist, position) {
-    if (llist.next === null) {
-        return null;
-    }
-
     if (position === 0) {
         return llist.next;
     }
