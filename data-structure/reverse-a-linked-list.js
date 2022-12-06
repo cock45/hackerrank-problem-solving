@@ -2,15 +2,12 @@
 // Here n is size of SinglyLinkedList
 
 function reverse(llist) {
-    let curNode = llist;
-    let prevNode = null;
+    let cur = llist,
+        prev = null;
 
-    while (curNode) {
-        const temp = curNode.next;
-        curNode.next = prevNode;
-        prevNode = curNode;
-        curNode = temp;
+    while (cur) {
+        [prev, cur, prev.next] = [cur, cur.next, prev];
     }
 
-    return prevNode;
+    return prev;
 }
