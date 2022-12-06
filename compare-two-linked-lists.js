@@ -10,9 +10,5 @@ function CompareLists(llist1, llist2) {
         llist2 = llist2.next;
     }
 
-    if (llist1 || llist2) {
-        return 0;
-    }
-
-    return 1;
+    return llist1 || llist2 ? 0 : 1;
 }
