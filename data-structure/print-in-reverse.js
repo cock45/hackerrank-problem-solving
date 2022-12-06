@@ -4,9 +4,8 @@
 function reversePrint(llist) {
     const arr = [];
 
-    while (llist) {
-        arr.push(llist.data);
-        llist = llist.next;
+    for (let cur = llist; cur; cur = cur.next) {
+        arr.push(cur.data);
     }
 
     console.log(arr.reverse().join("\n"));
