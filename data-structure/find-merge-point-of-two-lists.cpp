@@ -24,6 +24,11 @@ int findMergeNode(SinglyLinkedListNode *head1, SinglyLinkedListNode *head2)
         {
             n2 = head1;
         }
+
+        if (!n1 && !n2)
+        {
+            return -1;
+        }
     }
 
     return 0;
