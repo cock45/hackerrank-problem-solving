@@ -7,6 +7,11 @@ int findMergeNode(SinglyLinkedListNode *head1, SinglyLinkedListNode *head2)
 
     while (n1 && n2)
     {
+        if (!n1 && !n2)
+        {
+            return -1;
+        }
+
         if (n1 == n2)
         {
             return n1->data;
@@ -23,11 +28,6 @@ int findMergeNode(SinglyLinkedListNode *head1, SinglyLinkedListNode *head2)
         if (!n2)
         {
             n2 = head1;
-        }
-
-        if (!n1 && !n2)
-        {
-            return -1;
         }
     }
 
