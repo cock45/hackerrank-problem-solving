@@ -2,9 +2,15 @@
 // Here n is numbers of Nodes in the Tree
 
 function postOrder(root) {
-    if (root) {
-        postOrder(root.left);
-        postOrder(root.right);
-        process.stdout.write(root.data + " ");
+    function* traversal(root) {
+        if (!root) {
+            return;
+        }
+
+        yield* traversal(root.left);
+        yield* traversal(root.right);
+        yield root.data;
     }
+
+    console.log([...traversal(root)].join(" "));
 }
