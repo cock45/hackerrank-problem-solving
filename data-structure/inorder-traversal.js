@@ -11,5 +11,6 @@ function inOrder(root) {
         yield root.data;
         yield* traversal(root.right);
     }
+
     console.log([...traversal(root)].join(" "));
 }
