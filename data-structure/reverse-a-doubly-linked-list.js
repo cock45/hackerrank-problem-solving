@@ -2,11 +2,12 @@
 // Here n is size of DoublyLinkedList
 
 function reverse(llist) {
-    let cur = llist;
-    let prev = null;
+    let prev = null,
+        cur = llist;
 
     while (cur) {
-        [prev, prev.prev, prev.next, cur] = [cur, cur.next, cur.prev, cur.next];
+        [cur.prev, cur.next] = [cur.next, cur.prev];
+        [prev, cur] = [cur, cur.prev];
     }
 
     return prev;
