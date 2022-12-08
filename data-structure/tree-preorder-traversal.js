@@ -11,5 +11,6 @@ function preOrder(root) {
         yield* traversal(root.left);
         yield* traversal(root.right);
     }
+
     console.log([...traversal(root)].join(" "));
 }
