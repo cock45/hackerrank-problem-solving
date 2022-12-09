@@ -8,5 +8,8 @@ int height(Node *root)
         return -1;
     }
 
-    return max(height(root->left), height(root->right)) + 1;
+    int left = height(root->left);
+    int right = height(root->right);
+
+    return max(left, right) + 1;
 }
