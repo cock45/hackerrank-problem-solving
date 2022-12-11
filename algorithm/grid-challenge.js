@@ -1,19 +1,12 @@
-// Time Complexity is O(nm)
-// Here n is numbers of rows and columns in grid
+// Time Complexity is O(n^2logn)
+// Here n is length of grid
 
 function gridChallenge(grid) {
-    const gridByValues = grid.map((row) => {
-        const freq = Array.from(row).reduce(
-            (f, el) => (++f[el.charCodeAt(0) - 0x61], f),
-            new Array(26).fill(0)
-        );
-        let sum = 0;
-        return freq.map((v) => (sum += v));
-    });
+    const sorted = grid.map((row) => Array.from(row).sort());
 
-    for (let i = 0; i < 26; i++) {
-        for (let j = 1; j < grid.length; j++) {
-            if (gridByValues[j][i] > gridByValues[j - 1][i]) {
+    for (let i = 1; i < sorted.length; i++) {
+        for (let j = 0; j < sorted.length; j++) {
+            if (sorted[i][j] < sorted[i - 1][j]) {
                 return "NO";
             }
         }
