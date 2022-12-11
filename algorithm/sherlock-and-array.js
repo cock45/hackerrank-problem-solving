@@ -1,17 +1,16 @@
 function balancedSums(arr) {
-    let head = 0,
-        tail = arr.length - 1;
-    let diff = arr[head] - arr[tail];
+    let leftSum = 0,
+        rightSum = arr.reduce((prev, cur) => prev + cur);
 
-    while (head < tail) {
-        if (diff < 0) {
-            diff += arr[++head];
-        } else if (diff > 0) {
-            diff -= arr[--tail];
-        } else {
-            diff += arr[++head] - arr[--tail];
+    for (const value of arr) {
+        rightSum -= value;
+
+        if (leftSum === rightSum) {
+            return "YES";
         }
+
+        leftSum += value;
     }
 
-    return head === tail && diff === 0 ? "YES" : "NO";
+    return "NO";
 }
