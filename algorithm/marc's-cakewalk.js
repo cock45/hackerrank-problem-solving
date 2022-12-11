@@ -1,3 +1,6 @@
+// Time Complexity - O(nlogn)
+// Here n is length of calorie
+
 function marcsCakewalk(calorie) {
     calorie.sort((a, b) => b - a);
 
