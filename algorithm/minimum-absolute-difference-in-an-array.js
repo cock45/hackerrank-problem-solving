@@ -1,3 +1,6 @@
+// Time Complexity - O(nlogn)
+// Here n is length of arr
+
 function minimumAbsoluteDifference(arr) {
     return Math.min(
         ...arr
