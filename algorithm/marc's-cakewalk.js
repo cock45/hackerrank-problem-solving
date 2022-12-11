@@ -1,5 +1,13 @@
 function marcsCakewalk(calorie) {
-    return calorie
-        .sort((a, b) => b - a)
-        .reduce((sum, e, i) => sum + 2n ** BigInt(i) * BigInt(e), BigInt(0));
+    calorie.sort((a, b) => b - a);
+
+    let miles = 0n,
+        times = 1n;
+
+    for (const value of calorie) {
+        miles += BigInt(value) * times;
+        times *= 2n;
+    }
+
+    return miles;
 }
