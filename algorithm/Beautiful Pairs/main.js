@@ -1,25 +1,20 @@
-// O(nlogn)
+// O(n)
 
 function beautifulPairs(A, B) {
-    A.sort((a, b) => a - b);
-    B.sort((a, b) => a - b);
+    const M = 1e3;
+    const [freqA, freqB] = [A, B].map((s) =>
+        s.reduce((acc, v) => (++acc[v], acc), new Array(M + 1).fill(0))
+    );
 
-    let i = 0,
-        j = 0,
-        n = A.length;
-    let count = 0;
+    let count = 0,
+        bonus = -1;
 
-    while (i < n && j < n) {
-        if (A[i] === B[j]) {
-            count++;
-            i++;
-            j++;
-        } else if (A[i] > B[j]) {
-            j++;
-        } else {
-            i++;
+    for (let i = 1; i <= M; i++) {
+        count += Math.min(freqA[i], freqB[i]);
+        if (freqA[i] !== freqB[i]) {
+            bonus = 1;
         }
     }
 
-    return count === n ? n - 1 : count + 1;
+    return count + bonus;
 }
