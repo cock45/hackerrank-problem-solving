@@ -2,20 +2,24 @@
 // Here n is 10 000
 
 function toys(w) {
-    const M = 1e4;
-    const freq = w.reduce(
-        (f, weight) => (++f[weight], f),
-        new Array(M + 1).fill(0)
-    );
+    const vst = new Array(10001).fill(0);
 
-    let min = -1,
-        container = 0;
-    for (let t = 0; t <= M; t++) {
-        if (freq[t] > 0 && (min === -1 || (min > -1 && t > min + 4))) {
-            min = t;
-            container++;
-        }
+    for (const weight of w) {
+        vst[weight] = true;
     }
 
-    return container;
+    let lower = 0,
+        count = 0;
+
+    while (true) {
+        lower = vst.indexOf(true, lower) + 5;
+
+        if (lower < 5) {
+            break;
+        }
+
+        count++;
+    }
+
+    return count;
 }
