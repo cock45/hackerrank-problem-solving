@@ -1,8 +1,10 @@
 // O(n)
 
 function lonelyinteger(a) {
-    return (
-        2 * Array.from(new Set(a).values()).reduce((prev, cur) => prev + cur) -
-        a.reduce((prev, next) => prev + next, 0)
-    );
+    return a
+        .reduce(
+            (vst, v) => ((vst[v] = !vst[v]), vst),
+            new Array(101).fill(false)
+        )
+        .indexOf(true);
 }
