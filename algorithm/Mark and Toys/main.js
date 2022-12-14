@@ -1,11 +1,11 @@
 // O(nlogn)
 
 function maximumToys(prices, k) {
-    let count = 0;
     prices.sort((a, b) => a - b);
 
-    while (k > prices[count] && count < prices.length) {
-        k -= prices[count++];
+    let count = 0;
+    for (let i = 0; i < prices.length && k >= prices[i]; k -= prices[i++]) {
+        count++;
     }
 
     return count;
