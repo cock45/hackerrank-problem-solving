@@ -1,5 +1,10 @@
 function sumXor(n) {
-    return n === 0
-        ? 1
-        : 2 ** Array.from(n.toString(2)).filter((e) => e == 0).length;
+    let count = 0;
+
+    while (n) {
+        count += n % 2 ? 0 : 1;
+        n = parseInt(n / 2);
+    }
+
+    return 2 ** count;
 }
